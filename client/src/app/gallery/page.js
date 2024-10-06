@@ -22,18 +22,18 @@ export default function GalleryDetails() {
     selectdevices,
     setSelectDevice,
   } = useStore();
-  const galleryidfromhref = window.location.href.split("?")[1].split("=")[1]
 
   useEffect(() => {
     // const galleryid = data.get("id");
     
-    console.log(window.location.href.split("?")[1].split("=")[1]);
+    // console.log(window.location.href.split("?")[1].split("=")[1]);
     
     
     (async () => {
       const response = await axios.post(
         `${process.env.NEXT_PUBLIC_BASE_URL}/showdevicesofgallery`,
-        { galleryid: galleryidfromhref }
+        { galleryid: location.href.split("?")[1].split("=")[1]
+        }
       );
       setGalleryData(response.data.data);
       console.log(response.data);
