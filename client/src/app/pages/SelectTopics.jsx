@@ -25,7 +25,8 @@ function SelectTopics() {
     useEffect(()=>{
       
       
-      const deviceid = data.get("id");
+      
+      const deviceid = window.location.href.split("?")[1].split("=")[1]
 
       setDeviceId(Number(deviceid));
 

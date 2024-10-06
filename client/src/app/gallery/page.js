@@ -1,9 +1,7 @@
 "use client";
-import { useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { useState,useEffect } from "react";
 import useStore from "../store";
 import { Toaster } from "@/components/ui/toaster";
-import { useEffect } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
@@ -17,8 +15,6 @@ export default function GalleryDetails() {
 
   const router = useRouter();
 
-  const data = useSearchParams();
-
   const {
     successtoasttoggle,
     galleryData,
@@ -26,15 +22,19 @@ export default function GalleryDetails() {
     selectdevices,
     setSelectDevice,
   } = useStore();
+  const galleryidfromhref = window.location.href.split("?")[1].split("=")[1]
 
   useEffect(() => {
-    const galleryid = data.get("id");
+    // const galleryid = data.get("id");
+    
+    console.log(window.location.href.split("?")[1].split("=")[1]);
+    
+    
     (async () => {
       const response = await axios.post(
         `${process.env.NEXT_PUBLIC_BASE_URL}/showdevicesofgallery`,
-        { galleryid }
+        { galleryid: galleryidfromhref }
       );
-
       setGalleryData(response.data.data);
       console.log(response.data);
     })();

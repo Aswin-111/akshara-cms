@@ -1,6 +1,5 @@
 "use client"
 import Image from "next/image";
-import { useSearchParams } from "next/navigation";
 
 import useStore from "../store";
 import AddDevices from "../pages/AddDevices";
@@ -29,11 +28,13 @@ export default function Home() {
 
  
 
- const devicedata = useSearchParams()
+
   useEffect(() => {
     (async function () {
       
-      const deviceid = devicedata.get("id")
+      
+      const deviceid = window.location.href.split("?")[1].split("=")[1]
+      console.log(deviceid,"deviceid")
       const topicids = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/get-topics`,{id : deviceid});
       const topics = await axios.get("https://aksharammuseum.com/api/DataEntry1/getMainComplete?dtId=1");
 
