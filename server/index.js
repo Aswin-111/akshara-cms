@@ -496,6 +496,6 @@ app.post("/api/query", async function (req, res) {
   }
 });
 
-app.listen(7000, function() {
-  console.log('Listening to port: 6000 ');
+app.listen(process.env.PORT, function() {
+  console.log('Listening to port: 7000 ');
 });
