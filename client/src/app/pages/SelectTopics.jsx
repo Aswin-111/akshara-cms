@@ -38,13 +38,19 @@ function SelectTopics() {
     (async ()=>{
       (async function () {
         const results = await axios.get("https://aksharammuseum.com/api/DataEntry1/getMainComplete?dtId=1");
-  
+        const gettopics = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/topics`)
+       
       // console.log(results.data[0].backgroundImgList[0].bgUrl);
       const data = results.data
-      console.log(data,'data');
+      const datatopics = gettopics.data.topics
 
-      console.log(data[0].commonId)
-      setContentData([...data])
+      
+
+      // console.log(datatopics,'datatopics')
+
+      
+      const filtered_data = data.filter(i=>!datatopics.includes(i.commonId))
+      setContentData([...filtered_data])
       })();
         
         

@@ -459,6 +459,32 @@ app.delete('/delete-topic', async (req, res) => {
   }
 });
 
+app.get('/api/topics', async (req, res) => {
+  try {
+    // Fetch all devices and their topics
+    const devices = await Devices.findAll({
+      attributes: ['topics']
+    });
+
+    // Extract topics from all devices and merge them into a single array
+    let allTopics = [];
+    devices.forEach(device => {
+      if (device.topics && Array.isArray(device.topics)) {
+        allTopics = allTopics.concat(device.topics);
+      }
+    });
+
+    // Optionally, remove duplicates from the topics array
+    const uniqueTopics = [...new Set(allTopics)];
+
+    // Return the topics array
+    return res.status(200).json({ topics: uniqueTopics });
+  } catch (error) {
+    console.error('Error fetching topics:', error);
+    return res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
 app.post("/api/query", async function (req, res) {
   const { query } = req.body;
   try {

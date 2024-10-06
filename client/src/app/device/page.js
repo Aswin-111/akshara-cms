@@ -54,7 +54,7 @@ export default function Home() {
 
     }
     })();
-  }, [contentdata, devicedelete]);
+  }, [ devicedelete]);
   return (
     <div className="w-[100%] max-h-[100vh] ">
   
