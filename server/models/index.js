@@ -1,8 +1,8 @@
 const { Sequelize } = require('sequelize');
 
-const sequelize = new Sequelize('aksharacms' , 'root', 'pass@123', {
-    host: 'localhost',
-    dialect: 'mysql'
+const sequelize = new Sequelize(process.env.DATABASE ,process.env.USERNAME,process.env.PASS, {
+    host: process.env.HOST,
+    dialect: process.env.DIALECT
 })
 
 
