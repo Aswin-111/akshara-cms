@@ -343,7 +343,7 @@ app.post('/api/add-content', async (req, res) => {
   }
 });
 
-app.post('/get-topicsbyip', async (req, res) => {
+app.post('/api/get-topicsbyip', async (req, res) => {
   const { ip } = req.body;
 
   if (!ip) {
@@ -401,7 +401,7 @@ app.post('/api/get-topics', async (req, res) => {
 })  
 
 
-app.post('/get-topicsbyip', async (req, res) => {
+app.post('/api/get-topicsbyip', async (req, res) => {
   const { ip } = req.body;
 
   if (!ip) {
@@ -424,7 +424,7 @@ app.post('/get-topicsbyip', async (req, res) => {
   }
 })
 
-app.delete('/delete-topic', async (req, res) => {
+app.post('/api/delete-topic', async (req, res) => {
   const { id, topic } = req.body;
 
   if (!id || !topic) {
