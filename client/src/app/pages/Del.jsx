@@ -39,6 +39,7 @@ function Del({ devicedelete, setDeviceDelete }) {
               className="py-3 px-7 mt-10 text-white font-medium rounded-xl bg-green-500"
               onClick={() => {
                 (async () => {
+                  try{
                   const response = await axios.post(
                    `${process.env.NEXT_PUBLIC_BASE_URL}/delete-topic`,
                     {
@@ -53,6 +54,10 @@ function Del({ devicedelete, setDeviceDelete }) {
                     });
                     setDeviceDelete({ toggle: false, id: 0 });
                   }
+                }
+                catch(err){
+                  console.log(err)
+                }
                 })();
               }}
             />

@@ -24,12 +24,18 @@ const router = useRouter()
 
 useEffect(() => {
   (async function () {
+    try{
     const results = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/showdevices`);
 
     console.log(results.data.data);
     const data = results.data.data;
 
     setDevicesData(data);
+    }
+    
+    catch(err){
+      console.log(err)
+    }
   })();
 }, [adddevicetoggle,devicedelete]);
   return (

@@ -30,6 +30,7 @@ export default function GalleryDetails() {
     
     
     (async () => {
+      try{
       const response = await axios.post(
         `${process.env.NEXT_PUBLIC_BASE_URL}/showdevicesofgallery`,
         { galleryid: location.href.split("?")[1].split("=")[1]
@@ -37,6 +38,12 @@ export default function GalleryDetails() {
       );
       setGalleryData(response.data.data);
       console.log(response.data);
+    }
+    
+  catch(err){
+    console.log(err)
+  }
+    
     })();
   }, [devicedelete, selectdevices]);
   return (

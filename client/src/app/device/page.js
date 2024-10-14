@@ -31,7 +31,7 @@ export default function Home() {
 
   useEffect(() => {
     (async function () {
-      
+      try{
       
       const deviceid = window.location.href.split("?")[1].split("=")[1]
       console.log(deviceid,"deviceid")
@@ -53,6 +53,9 @@ export default function Home() {
       console.log(filtopics,'fil')
     setContentData([...filtopics])
 
+    }}
+    catch(err){
+      console.log(err)
     }
     })();
   }, [ devicedelete]);

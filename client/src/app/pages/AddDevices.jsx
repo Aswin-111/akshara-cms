@@ -61,6 +61,8 @@ function AddDevices() {
               
               
               (async ()=>{
+
+                try{
                 const response = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/adddevices`,{
                   
                   ip:ipref.current.value,
@@ -75,6 +77,73 @@ function AddDevices() {
                   ipref.current.value = ""
                   deviceref.current.value = ""
                 }
+              }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              
+              
+            
+              catch(err){
+                console.log(err)
+              }
               })()
               
               

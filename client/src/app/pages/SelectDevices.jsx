@@ -37,6 +37,7 @@ function SelectDevices() {
       
   
     (async ()=>{
+      try{
         const response = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/checkavailability`)
         
         
@@ -44,6 +45,10 @@ function SelectDevices() {
         console.log(response.data.data);
         
         setSelectDevicesOfGallery(response.data.data);
+      }
+      catch(err){
+        console.log(err)
+      }
       
     })()
   },[tog])

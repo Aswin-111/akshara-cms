@@ -38,6 +38,7 @@ function SelectTopics() {
   
     (async ()=>{
       (async function () {
+        try{
         const results = await axios.get("https://aksharammuseum.com/api/DataEntry1/getMainComplete?dtId=1");
         const gettopics = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/topics`)
        
@@ -52,6 +53,12 @@ function SelectTopics() {
       
       const filtered_data = data.filter(i=>!datatopics.includes(i.commonId))
       setContentData([...filtered_data])
+        }
+
+
+        catch(err){
+          console.log(err)
+        }
       })();
         
         

@@ -21,12 +21,21 @@ export default function Home() {
 
 
       console.log(process.env.NEXT_PUBLIC_BASE_URL,'NEXT BASE')
+      try{
       const results = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/showgallery`);
 
       console.log(results.data.data);
       const data = results.data.data;
 
       setCard(data);
+      }
+     
+
+
+
+      catch(err){
+        console.log(err)
+      }
     })();
   }, [addgallerytoggle,deletegallery])
   return (
